@@ -2,8 +2,10 @@ from cmd import Cmd
 
 from dotenv import load_dotenv
 
-from file_utils import clear_input_folder
-from s3_utils import upload_files
+from book_processor_db.db_actions import insert_work, insert_sections
+from file_utils import clear_input_folder, get_processing_files, get_file_contents, move_processing_file_to_processed
+from s3_utils import upload_files, get_first_file_in_folder, download_all_files_in_folder, delete_file_in_folder
+from text_vector_db.db_actions import embed_and_insert_vector
 
 load_dotenv()
 # token = os.environ.get("")
@@ -19,6 +21,17 @@ class CLIApp(Cmd):
         print('Uploading files...')
         upload_files()
         clear_input_folder()
+        download_all_files_in_folder()
+        files = get_processing_files()
+        for file in files:
+            file_name = file.split('/')[-1]
+            work_id = insert_work(file_name)
+
+            file_text = get_file_contents(file)
+            insert_sections(work_id, file_text)
+            delete_file_in_folder(file_name)
+            move_processing_file_to_processed(file_name)
+
 
     def do_exit(self, args):
         """Exit the app."""
