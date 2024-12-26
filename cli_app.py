@@ -5,11 +5,11 @@ from dotenv import load_dotenv
 from book_processor_db.db_actions import insert_work, insert_sections
 from file_utils import clear_input_folder, get_processing_files, get_file_contents, move_processing_file_to_processed, \
     convert_epub
+from news.sources import sources
 from s3_utils import upload_files, get_first_file_in_folder, download_all_files_in_folder, delete_file_in_folder
-from text_vector_db.db_actions import embed_and_insert_vector
+from scraping.scrape_url import scrape_url
 
 load_dotenv()
-# token = os.environ.get("")
 
 
 class CLIApp(Cmd):
@@ -33,16 +33,19 @@ class CLIApp(Cmd):
             delete_file_in_folder(file_name)
             move_processing_file_to_processed(file_name)
 
-
     def do_exit(self, args):
         """Exit the app."""
         raise SystemExit()
-
 
     @staticmethod
     def do_convert_epub(self):
         convert_epub()
 
+    @staticmethod
+    def do_scrape_news(self):
+        success, content, error = scrape_url(sources[0][1])
+        print(success, content)
+
 
 if __name__ == '__main__':
-    CLIApp().cmdloop("Enter a command (process_files, convert_epub, exit):")
+    CLIApp().cmdloop("Enter a command (process_files, convert_epub, scrape_news, exit):")
