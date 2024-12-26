@@ -1,10 +1,10 @@
 import psycopg2
 
 
-def insert_section_query(sequence, work_id, text, database):
+def insert_section_query(sequence, work_id, text, summary, database):
     try:
         cursor = database.cursor()
-        cursor.execute("INSERT INTO section (id, sequence, work_id, text) VALUES (DEFAULT, %s, %s, %s) RETURNING id", [sequence, work_id, text])
+        cursor.execute("INSERT INTO section (id, sequence, work_id, text, summary) VALUES (DEFAULT, %s, %s, %s, %s) RETURNING id", [sequence, work_id, text, summary])
 
         created_id = cursor.fetchone()[0]
 

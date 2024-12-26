@@ -17,7 +17,7 @@ def chat(prompt):
         'content': prompt,
       },
     ])
-    print(response.message.content)
+    return response.message.content
 
 
 def embed(prompt):
