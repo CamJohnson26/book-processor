@@ -8,9 +8,20 @@ sources = [
     ['PBS', 'https://www.pbs.org/newshour'],
     ['The Washington Post', 'https://www.washingtonpost.com'],
     ['Reuters', 'https://www.reuters.com'],
-    ['Bloomberg', 'https://www.bloomberg.com'],
+    # ['Bloomberg', 'https://www.bloomberg.com'],
     ['Fox News', 'https://www.foxnews.com'],
     ['The Wall Street Journal', 'https://www.wsj.com'],
     ['ABC Australia', 'https://www.abc.net.au/news'],
-    ['AP News', 'https://apnews.com']
+    # ['AP News', 'https://apnews.com']
+]
+
+topics = [
+    'Economy',
+    'International Relations',
+    'Global Politics',
+    'United States Politics',
+    'Science and Technology',
+    'Health',
+    'Sports',
+    'Entertainment'
 ]
