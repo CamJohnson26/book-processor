@@ -67,7 +67,7 @@ class CLIApp(Cmd):
         text = ''
         for front_page_summary in front_page_summaries:
             text += '\n' + front_page_summary[2]
-        summary = summarize_long_text(text, CREATE_NEWS_STORY_PROMPT_V1, char_limit=10_000)
+        summary = summarize_long_text(text, CREATE_NEWS_STORY_PROMPT_V1, compress=False, char_limit=10_000)
 
         insert_daily_news_summary(summary)
 

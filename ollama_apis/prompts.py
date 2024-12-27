@@ -29,7 +29,8 @@ Remove the noise, irrelevant information amd any editorializing
 
 CREATE_NEWS_STORY_PROMPT_V1 = '''
 Only perform this task, don't comment or say anything other than the raw answer.
-Write a detailed, informative paragraph on each of these topics, using the raw information provided below.
+You will summarize today's news into a one page, executive summary.
+Write a detailed, informative paragraph on each of these topics, using the raw information provided below:
+Global Issues, Economy, Science and Technology, Sports & Entertainment.
 Separate paragraphs with 3 blank lines.
-Topics: Global Issues, Economy, Science and Technology, Sports & Entertainment.
 '''
