@@ -73,10 +73,11 @@ class CLIApp(Cmd):
 
     @staticmethod
     def do_good_morning(self):
-        self.do_scrape_news(self)
-        self.do_front_page_summary(self)
-        self.do_daily_news_summary(self)
+        CLIApp.do_scrape_news(self)
+        CLIApp.do_front_page_summary(self)
+        for i in range(5):
+           CLIApp.do_daily_news_summary(self)
 
 
 if __name__ == '__main__':
-    CLIApp().cmdloop("Enter a command (process_files, convert_epub, scrape_news, front_page_summary, daily_news_summary, exit):")
+    CLIApp().cmdloop("Enter a command (process_files, convert_epub, scrape_news, front_page_summary, daily_news_summary, good_morning, exit):")
