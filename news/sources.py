@@ -12,6 +12,7 @@ sources = [
     ['Fox News', 'https://www.foxnews.com'],
     ['The Wall Street Journal', 'https://www.wsj.com'],
     ['ABC Australia', 'https://www.abc.net.au/news'],
+    ['Hacker News', 'https://news.ycombinator.com'],
     # ['AP News', 'https://apnews.com']
 ]
 

@@ -67,9 +67,15 @@ class CLIApp(Cmd):
         text = ''
         for front_page_summary in front_page_summaries:
             text += '\n' + front_page_summary[2]
-        summary = summarize_long_text(text, CREATE_NEWS_STORY_PROMPT_V1, compress=False, char_limit=10_000)
+        summary = summarize_long_text(text, CREATE_NEWS_STORY_PROMPT_V1, char_limit=10_000, compress=False)
 
         insert_daily_news_summary(summary)
+
+    @staticmethod
+    def do_good_morning(self):
+        self.do_scrape_news(self)
+        self.do_front_page_summary(self)
+        self.do_daily_news_summary(self)
 
 
 if __name__ == '__main__':
