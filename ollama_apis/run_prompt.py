@@ -5,7 +5,7 @@ from ollama import Client
 
 load_dotenv()
 
-DEFAULT_MODEL = 'llama3.1'
+DEFAULT_MODEL = 'gpt-oss:20b'  # Change to your preferred model
 
 client = Client(
   host=os.environ.get("OLLAMA_API_ENDPOINT"),
@@ -13,12 +13,12 @@ client = Client(
 
 
 def chat(prompt):
-    response = client.chat(model='llama3.1', messages=[
+    response = client.chat(model=DEFAULT_MODEL, messages=[
       {
         'role': 'user',
         'content': prompt,
       },
-    ])
+    ], keep_alive='')
     return response.message.content
 
 

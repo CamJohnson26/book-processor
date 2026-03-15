@@ -26,7 +26,8 @@ Clean up and combine these summaries:
 SUMMARIZE_TEXT_PROMPT_V1 = '''
 Only perform this task, don't comment or say anything other than the raw answer.
 Extract the major news events into a ranked list of all major events mentioned in the following text.
-Remove the noise, irrelevant information amd any editorializing
+Remove the noise, irrelevant information amd any editorializing.
+Your output should be a numbered list of the major events, ranked by importance.
 '''
 
 CREATE_NEWS_STORY_PROMPT_V1 = '''
